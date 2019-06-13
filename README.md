@@ -1,12 +1,12 @@
 # Java- InterviewQuestions
-##每日六道JAVA常见面试题分享
-#2019-06-01 
-###腾讯的Java面试题
+## 每日六道JAVA常见面试题分享
+# 2019-06-01 
+### 腾讯的Java面试题
 1.TCP和UDP的区别，TCP为什么是三次握手，不是两次。
 
         因为tcp是全双工协议，区别在于前者可靠，后者不可靠，以及效率更高。
         
-###Dubbo面试题
+### Dubbo面试题
 2.dubbo和dubbox之间的区别？
 
         Dubbox 和Dubbo本质上没有区别，名字的含义扩展了Dubbo而已，以下扩展出来的功能
@@ -19,7 +19,7 @@
         支持完全基于Java代码的Dubbo配置；
         
         
-###Java List面试题
+### Java List面试题
 3.ArrayList和LinkedList的区别？分别用在什么场景？
 
         ①ArrayList和LinkedList可想从名字分析，它们一个是Array(动态数组)的数据结构，一个是Link(链表)的数据结构，此外，它们两个都是对List接口的实现。
@@ -32,7 +32,7 @@
         链表，插入删除快，查找修改慢。  适用于频繁增删的场景。
         数组，查找快，插入删除慢。  适用于频繁查找和修改的场景。
 
-###Java Map集合面试题
+### Java Map集合面试题
 4.Collection集合接口和Map接口有什么关系？
 
         没有直接关系，但是一些子类会有依赖，Collection是最基本的集合接口，声明了适用于JAVA集合（只包括Set和List）的通用方法。Map接口并不是Collection接口的子接口，但是它仍然被看作是Collection框架的一部分。
