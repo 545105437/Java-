@@ -387,3 +387,42 @@
         答：Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内存分页，而非物理分页。可以在sql内直接书写带有物理分页的参数来完成物理分页功能，也可以使用分页插件来完成物理分页。
           分页插件的基本原理是使用Mybatis提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的sql，然后重写sql，根据dialect方言，添加对应的物理分页语句和物理分页参数。
           
+# 2019-06-13
+### 
+1.Mybatis动态sql有什么用？执行原理？有哪些动态sql？
+
+        答：Mybatis动态sql可以在xml映射文件内，以标签的形式编写动态sql，执行原理是根据表达式的值，完成逻辑判断并动态拼接sql的功能。
+        Mybatis提供了9种动态sql标签：trim | where | set | foreach | if | choose | when | otherwise | bind.
+        
+### 
+2.Xml映射文件中，除了常见的select|insert|update|delete标签之外，还有哪些标签？
+
+        答：<resultMap>、<parameterMap>、<sql>、<include>、<selectKey>，加上动态sql的9个标签引入sql片段，
+        <selectKey>为不支持自增的主键生成策略标签。
+        
+### 
+3.为什么说MyBatis是半自动ORM映射工具？它与全自动的区别在哪里？
+
+        答：Hibernate属于全自动ORM映射工具，使用Hibernate查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。
+        而Mybatis在查询关联对象或关联集合对象时，需要手动编写sql来完成，所以，称之为半自动ORM映射工具。
+
+### 
+4.MyBatis实现一对一有几种方式？具体怎么操作的？
+
+        答：有联合查询和嵌套查询，联合查询是几个表联合查询，只查询一次，通过resultMap里面配置association节点配置一对一的类就可以完成；
+        嵌套查询是先查一个表，根据这个表里面的结果的外键id，去在另外一个表里面查询数据，也是通过association配置，但另外一个表的查询通过select属性配置。
+        
+### 
+5.MyBatis实现一对多有几种方式，怎么操作的？
+   
+        答：有联合查询和嵌套查询。联合查询是几个表联合查询，只查询一次，通过resultMap里面的collection节点配置一对多的类就可以完成；
+        嵌套查询是先查一个表，根据这个表里面的结果的外键id，去在另外一个表里面查询数据，也是通过配置collection，但另外一个表的查询通过select节点配置。
+        
+### 
+6.Mybatis的一级、二级缓存？
+
+        答：1）一级缓存：基于PerpetualCache的HashMap本地缓存，其存储作用域为Session，当Session flush或close之后，该Session中的所有Cache就将清空，默认打开一级缓存。
+        2）二级缓存与一级缓存其机制相同，默认也是采用PerpetualCache、HashMap存储，不同在于其存储作用域为Mapper(namespace)，并且可自定义存储源，如Ehcache。
+        默认不打开二级缓存，要开启二级缓存，使用二级缓存属性类需要实现Serializable序列化接口(可用来保存对象的状态)，可在它的映射文件中配置<cache>;
+        3）对于缓存数据更新机制，当某一个作用域（一级缓存Session/二级缓存Namespaces）的进行了C/U/D操作后，默认该作用域下所有select中的缓存将被clear。
+    
