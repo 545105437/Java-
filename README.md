@@ -899,4 +899,50 @@
             
             另外Filter的实现和struts2的拦截器的实现都是AOP思想的体现。
 
+   
+# 2019-06-28
+ ### 
+ 1.什么是SpringBoot？
+ 
+         答：用来简化Spring应用的初始搭建以及开发过程中用特定的方式来进行配置（properties或yml文件）
+         创建独立的Spring应用程序main方法运行
+         嵌入的Tomcat无需部署war文件
+         简化maven配置
+         自动配置Spring添加对应功能starter自动配置
+         
+ ### 
+ 2.SpringBoot常用的starter有哪些？
+ 
+         答：spring-boot-starter-web 嵌入tomcat和web开发需要servlet与jsp支持
+         spring-boot-starter-data-jpa 数据库支持
+         spring-boot-starter-data-redis redis数据库支持
+         spring-boot-starter-data-solr solr支持
+         mybatis-spring-boot-starter 第三方mybatis集成starter
+                 
+ ### 
+ 3.SpringBoot自动配置的原理？
+ 
+         答：在Spring程序main方法中添加@SpringBootApplication或者@EnableAutoConfiguration，会自动去maven中读取每个starter中的spring.factories文件，该文件里配置了所有需要被创建Spring容器找那个的bean。
+         
+ ### 
+ 4.SpringBoot读取配置文件的方式？
+ 
+         答：Springboot默认读取配置文件为application.properties或者是application.yml
+         
+ ### 
+ 5.SpringBoot集成MyBatis的过程？
+    
+         答：添加mybatis的starter maven依赖
+                <dependency>
+         			<groupId>org.mybatis.spring.boot</groupId>
+         			<artifactId>mybatis-spring-boot-starter</artifactId>
+         			<version>1.3.0</version>
+         		</dependency>
+         在mybatis的接口中添加@Mapper注解，在application.yml配置数据源信息
      
+ ### 
+ 6.SpringBoot如何添加【修改代码】自动重启功能？
+ 
+         答：添加开发者工具集 =====  spring-boot-devtools
+
+   
